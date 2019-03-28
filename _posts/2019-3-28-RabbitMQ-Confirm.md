@@ -1,5 +1,4 @@
-\---
-
+---
 layout: post
 
 title: "RabbitMQ message confirm"
@@ -9,8 +8,7 @@ date: 2019-3-28
 tags: [RabbitMQ]
 
 comments: true
-
-\---
+---
 
 ### Message confirm/ack异常
 
