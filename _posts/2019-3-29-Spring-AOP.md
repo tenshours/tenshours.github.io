@@ -8,7 +8,7 @@ Tag:
 
 #### 静态代理
 
-{% highlight css %}
+~~~ java
 public interface Hello {
 	void say();
 }
@@ -32,7 +32,7 @@ public class Proxy implements Hello() {
 		this.mHello = pHello;
 	}
 }
-{% endhighlight css %}
+~~~
 
 静态代理缺点：如果一旦类似于Hello需要代理的对象太多，代码量太大，维护成本高。
 
