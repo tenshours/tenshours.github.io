@@ -22,19 +22,17 @@ public class World implements Hello {
 
 public class Proxy implements Hello() {
 	Hello mHello;
-	public Proxy(Hello pHello) {
-		this.mHello = pHello;
-	}
-    
     @Override
     public void say() {
 		System.out.print("Before say");	
 		mHello.say();
 		System.out.print("After say");	
 	}
-
+	public Proxy(Hello pHello) {
+		this.mHello = pHello;
+	}
 }
-{% highlight css %}
+{% endhighlight css %}
 
 静态代理缺点：如果一旦类似于Hello需要代理的对象太多，代码量太大，维护成本高。
 
