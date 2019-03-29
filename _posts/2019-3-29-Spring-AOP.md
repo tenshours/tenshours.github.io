@@ -13,7 +13,7 @@ public interface Hello {
 	void say();
 }
 
-public class World implements Hell {
+public class World implements Hello {
 	@Override
 	public void say() {
 		System.out.print("Hello World!");
@@ -25,13 +25,14 @@ public class Proxy implements Hello() {
 	public Proxy(Hello pHello) {
 		this.mHello = pHello;
 	}
+    
+    @Override
+    public void say() {
+		System.out.print("Before say");	
+		mHello.say();
+		System.out.print("After say");	
+	}
 
-​	@Override
-​	public void say() {
-​		System.out.print("Before say");	
-​		mHello.say();
-​		System.out.print("After say");	
-​	}
 }
 {% highlight css %}
 
