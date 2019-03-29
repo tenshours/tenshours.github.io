@@ -57,12 +57,11 @@ public class InvocationSub implements InvocationHandler {
 }
 
 public class Test {
-
     public static void main(String[] args) {
         World world = new World();
         InvocationSub sub = new InvocationSub();
         sub.setTarget(world);
-        Hello hello = (Hello) Proxy.newProxyInstance(world.getClass().getClassLoader(), 																			world.getClass().getInterfaces(), sub);
+        Hello hello = (Hello) Proxy.newProxyInstance(world.getClass().getClassLoader(), 	world.getClass().getInterfaces(), sub);
         hello.say();
     }
 }
@@ -72,3 +71,33 @@ JDK用java.lang.reflect.InvocationHandler来实现动态代理。被代理的对
 
 #### CGLIB
 
+```java
+public class CglibProxy implements MethodInterceptor {
+
+    Object target;
+
+    public CglibProxy(Object pTarget) {
+        target = pTarget;
+    }
+
+    @Override
+    public Object intercept(Object pO, Method pMethod, Object[] pObjects, MethodProxy pMethodProxy) throws Throwable {
+        System.out.println("Before invoke say");
+        Object result = pMethodProxy.invoke(target, pObjects);
+        System.out.println("After invoke say");
+        return result;
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        World world = new World();
+        Enhancer enhancer = new Enhancer();
+        CglibProxy proxy = new CglibProxy(world);
+        enhancer.setCallback(proxy);
+        enhancer.setSuperclass(world.getClass());
+        Hello hello = (Hello) enhancer.create();
+        hello.say();
+    }
+}
+```
