@@ -67,7 +67,7 @@ public class Test {
 }
 ```
 
-JDK用java.lang.reflect.InvocationHandler来实现动态代理。被代理的对象必须是实现了接口。当执行的时候，JVM就创建字节码class文件。
+JDK用java.lang.reflect.InvocationHandler来实现动态代理。被代理的对象必须是实现了接口。当执行的时候，JVM就创建字节码class文件，动态的加载class，执行速度变慢，编译速度和原来一样。
 
 #### CGLIB
 
@@ -101,3 +101,9 @@ public class Test {
     }
 }
 ```
+
+Cglib的实现，可以针对接口和具体类。在编译的时候生成class文件，执行的速度快，编译花更多时间。
+
+
+
+Spring AOP实现的时候，就动态切换选择使用JDK的代理还是Cglib来动态代理。他们都会创建代理对象。
