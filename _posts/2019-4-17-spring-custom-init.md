@@ -38,7 +38,7 @@ org.springframework.beans.factory.DisposableBean
 
 
 
-~~~java
+~~~python
 org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory#initializeBean(java.lang.String, java.lang.Object, org.springframework.beans.factory.support.RootBeanDefinition)
  
 protected Object initializeBean(final String beanName, final Object bean, @Nullable RootBeanDefinition mbd) {
